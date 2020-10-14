@@ -1,27 +1,87 @@
-const userName = 'Denis';
-const userAge = 20;
-const userRole = 'Manager';
-const userOccupation = undefined; 
+/// first
 
-const isTrue = !!userName && userAge > 18;
+// ? =========================================================
 
-const AdminOrSEO =  userRole == 'Admin' || userOccupation == 'CEO';
+// const doesWant = confirm('Хотите ли вы пива? ')
 
-const occupationOrRole = userOccupation ?? userRole;
+// const beerMessage = (doesWant) ? "Вы хотите пива" : "Вы не хотите пива"
 
-const isUserRole = !!userName && userAge > 18 || userRole == 'Admin';
+// console.log(beerMessage)
 
-console.log(isTrue);
-console.log(AdminOrSEO);
-console.log(occupationOrRole);
-console.log(isUserRole);
+// if ===========================================================
 
-// bonus
+// const doesWant = confirm('Хотите ли вы пива? ');
 
-const returnAge = (userRole !== 'Admin' && userName) ? userAge : false
+// let beerMessage;
 
-console.log(returnAge);
+// if (doesWant) {
+//     beerMessage = "Вы хотите пива";
+// } else {
+//     beerMessage = "Вы не хотите пива";
+// }
 
-// const returnAge = (!!userName && userRole !== 'Admin') && userAge
+// console.log(beerMessage)
 
-// console.log(returnAge)
+/// second
+
+// ? --------------------------------------
+
+// const userAge = prompt('CКолько вам лет ')
+
+// const welcomeMessage = (userAge < 18) ? 
+//   'Вход Запрещен' :
+//   (userAge > 30) ? 'Welcome' : 'Hi!';
+
+// console.log(welcomeMessage);
+
+// if -------------------------------------
+
+// const userAge = prompt('CКолько вам лет ')
+
+// let welcomeMessage;
+
+// if (userAge > 30) {
+//     welcomeMessage = 'Welcome'
+// } else if (userAge >= 18 && userAge < 30) {
+//     welcomeMessage = 'Hi!'
+// } else {
+//     welcomeMessage = 'Вход Запрещен'
+// }
+
+// console.log(welcomeMessage)
+
+/// third=======================================
+
+// if =================================================
+
+// const userChoise = confirm('Чай(Ok) или Кофе(Cancel)? ')
+// const withSugar = confirm('Сахаром(Ok) или без захара(Cancel)? ')
+
+// let choiseResult;
+
+// if (userChoise && withSugar) {
+//     choiseResult = 'Чай с сахаром' 
+// } else {
+//     choiseResult = 'Чай с без сахара'
+// }
+
+// if (!userChoise && withSugar) {
+//     choiseResult = "Кофе с сахаром"
+// } else {
+//     choiseResult = 'Кофе с без сахара' 
+// }
+
+
+// console.log(choiseResult)
+
+// ? -------------------------------------------------------
+
+// const userChoise = confirm('Чай(Ok) или Кофе(Cancel)? ')
+// const withSugar = confirm('Сахаром(Ok) или без захара(Cancel)? ')
+
+// const choiseResult = (userChoise && withSugar) ? "Чай с сахаром" : 'Чай с без сахара' &&  (!userChoise && withSugar) ? 'Кофе с сахаром' : 'Кофе с без сахара';
+
+// console.log(choiseResult)
+
+
+
