@@ -24,6 +24,7 @@ if (userLogin === defaultLogin && userPassword === defaultPassword) {
 
             if (userPassword == defaultPassword) {
                 successMessage = 'Welcome'
+                break;
             }
         }
     }
