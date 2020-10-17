@@ -18,13 +18,13 @@ if (userLogin === defaultLogin && userPassword === defaultPassword) {
 
         if (!againPassword) {
              errorMessage = 'Неправилный пароль'
-             isRepeat = false
+             isRepeat = false;
         } else {
             let userPassword = prompt('Enter you password: ')
 
             if (userPassword == defaultPassword) {
                 successMessage = 'Welcome'
-                break;
+                isRepeat = false;
             }
         }
     }
