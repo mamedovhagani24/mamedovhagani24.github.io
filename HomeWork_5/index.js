@@ -10,7 +10,7 @@ let isRepeat = false;
 
 if (userLogin === defaultLogin && userPassword === defaultPassword) { 
     successMessage = 'Welcome'
-} else if (userPassword !== defaultPassword) {
+} else if (userLogin === defaultLogin && userPassword !== defaultPassword) {
     let isRepeat = true;
 
     while (isRepeat) {
@@ -26,10 +26,9 @@ if (userLogin === defaultLogin && userPassword === defaultPassword) {
                 successMessage = 'Welcome'
             }
         }
-
-        
     }
+} else {
+    errorMessage = 'Неправильный Логин'
 }
-
 
 console.log(errorMessage ?? successMessage)
