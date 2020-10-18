@@ -1,15 +1,15 @@
 function FicobacciNumber(number) {
     let result = 0;
-    let prevRuslt = 1;
-    let preprevResult = 1;
+    let prevResult = 1;
+    let prePrevResult = 1;
 
     if (number > 2) {
         for (let i = 2; i < number; i++) {
-            result = lastRuslt + preLastResult;
+            result = prevResult + prePrevResult;
 
-            preLastResult = lastRuslt;
+            prePrevResult = prevResult;
 
-            lastRuslt = result;
+            prevResult = result;
         }
     } else if (number === 0) {
         return 0;
