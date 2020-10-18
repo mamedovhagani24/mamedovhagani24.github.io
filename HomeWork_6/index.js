@@ -6,19 +6,20 @@ function FicobacciNumber(number) {
     if (number > 2) {
         for (let i = 2; i < number; i++) {
             result = prevResult + prePrevResult;
-
+            
             prePrevResult = prevResult;
 
             prevResult = result;
+
         }
     } else if (number === 0) {
         return 0;
     } else {
         return 1;
     }
+
+    return prevResult;
 }
-
-
 
 // ------------------------------------------------
 
