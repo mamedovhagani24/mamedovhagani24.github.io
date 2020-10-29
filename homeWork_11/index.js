@@ -3,12 +3,10 @@ const obj = {
     "42": "answer",
     "greeting": "Hello",
     "3.14": "PI",
-    '1ksdlkwsk': 'Salam',
-    "2.1x": 'salam'
 
 }
 
-function returnNUmberKey(obj) {
+function showKeyByNumber(obj) {
 
     for (let key in obj) {
 
@@ -20,5 +18,5 @@ function returnNUmberKey(obj) {
 }
 
 
-returnNUmberKey(obj)
+showKeyByNumber(obj)
 
