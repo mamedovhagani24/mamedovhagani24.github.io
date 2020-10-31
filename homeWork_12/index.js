@@ -1,3 +1,4 @@
+
 const salaries = {
     HRs: { Alice: 500, Bob: 700 },
     Devs: { Carol: 2500, Carlos: 1000, Charles: 1500 },
@@ -7,8 +8,8 @@ const salaries = {
 let newSalaries = {};
 
 for (let key in salaries) {
+    newSalaries[key] = { ...salaries[key] };
     for (let value in salaries[key]) {
-        newSalaries[key] = { ...salaries[key] };
         newSalaries[key][value] *= 2;
     }
 }
