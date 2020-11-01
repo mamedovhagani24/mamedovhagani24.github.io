@@ -6,7 +6,7 @@ function gameMoreLess(genericNumber) {
 }
 
 function returnRandomNumber () {
-    return Math.floor((Math.random() * 10) + 1)
+    return Math.floor((Math.random() * 100) + 1)
 }
 
 
@@ -24,7 +24,7 @@ function inProccess(genericNumber) {
                alert("Много!");
           } else if (userNumber < genericNumber) {
                alert("Мало!");
-          } else if (userNumber < 1 || userNumber > 10) {
+          } else if (userNumber < 1 || userNumber > 100) {
                alert("Не тот диапазон!");
           } else if(isNaN(userNumber)) {
                alert ('Это не число')
