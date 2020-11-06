@@ -1,6 +1,6 @@
 // Создайте массив [‘Apple’, ‘Banana’, ‘Pineapple’]
 
-let fruits = ['Apple', 'Banana', 'Pineapple']
+const fruits = ['Apple', 'Banana', 'Pineapple']
 console.log(fruits)
 
 // Добавьте в конец массива ‘Orange’ и ‘Grapes’
