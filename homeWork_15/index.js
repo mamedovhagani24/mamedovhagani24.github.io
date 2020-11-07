@@ -1,61 +1,61 @@
-// Method for ... of (1)
-// ------------------------------------------
+// // Method for ... of (1)
+// // ------------------------------------------
 
-const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-function sumNumbers(numArr) {
+// function sumNumbers(numArr) {
 
-    let sum = 0;
+//     let sum = 0;
 
-    for(let value of numArr) sum += value
+//     for(let value of numArr) sum += value
 
-    return sum
-}
+//     return sum
+// }
 
-console.log(sumNumbers(numArr))
+// console.log(sumNumbers(numArr))
 
-// Method map (1)
-// ------------------------------------------------- 
+// // Method map (1)
+// // ------------------------------------------------- 
 
 
-const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-function sumNumbers(numArr) {
+// function sumNumbers(numArr) {
     
-    const sumArr = numArr.reduce((sum, elem) => sum + elem, 0)
+//     const sumArr = numArr.reduce((sum, elem) => sum + elem, 0)
 
-    return sumArr
+//     return sumArr
 
-}
+// }
 
-console.log(sumNumbers(numArr))
+// console.log(sumNumbers(numArr))
 
-// Method for ... of (2)
-// ------------------------------------------
+// // Method for ... of (2)
+// // ------------------------------------------
 
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
-function mapToUpperCase(arr) {
+// function mapToUpperCase(arr) {
 
-    let newArr = []
+//     let newArr = []
 
-    for (let value of arr) newArr.push(value.toUpperCase())
+//     for (let value of arr) newArr.push(value.toUpperCase())
 
-    return newArr
-}
+//     return newArr
+// }
 
-console.log(mapToUpperCase(fruits))
+// console.log(mapToUpperCase(fruits))
 
-// Method map (2)
-// ------------------------------------------------- 
+// // Method map (2)
+// // ------------------------------------------------- 
 
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
-function mapToUpperCase(arr) {
+// function mapToUpperCase(arr) {
 
-    const newArr = arr.map((elem) => elem.toUpperCase())
+//     const newArr = arr.map((elem) => elem.toUpperCase())
 
-    return newArr
-}
+//     return newArr
+// }
 
-console.log(mapToUpperCase(fruits))
+// console.log(mapToUpperCase(fruits))
