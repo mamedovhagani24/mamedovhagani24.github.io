@@ -1,14 +1,14 @@
-function capitalize(string) {
-    const strArr = string.split(' ')
+// function capitalize(string) {
+//     const strArr = string.split(' ')
 
-    let result = strArr.reduce((res, current) => {
-        return res + (" " + current[0].toUpperCase() + current.slice(1))
-    }, '')
+//     let result = strArr.reduce((res, current) => {
+//         return res + (" " + current[0].toUpperCase() + current.slice(1))
+//     }, '')
 
-    return result
-}
+//     return result
+// }
 
-console.log(capitalize('my name is Cat'))
+// console.log(capitalize('my name is Cat'))
 
 function capitalize(string) {
     const strArr = string.split(' ')
