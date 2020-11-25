@@ -40,7 +40,7 @@ ul.append(newLi);
 
 // Сделайте зелёный фон всем li внутри ol.
 
-const li = document.querySelectorAll("ul li");
+const li = document.querySelectorAll("ol li");
 
 for (let key of li) {
   key.style.backgroundColor = "green";
