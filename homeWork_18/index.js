@@ -1,31 +1,19 @@
-// function capitalize(string) {
-//     const strArr = string.split(' ')
+'use strict'
 
-//     let result = strArr.reduce((res, current) => {
-//         return res + (" " + current[0].toUpperCase() + current.slice(1))
-//     }, '')
-
-//     return result
+// function isTrue(relation) {
+//     console.log(eval(relation))
 // }
 
-// console.log(capitalize('my name is Cat'))
+// isTrue('2 > 3')
+// isTrue('2 == 2')
 
-function capitalize(string) {
-    const strArr = string.split(' ')
+let firstArray = [[1, 2], [5, 6]]
+let secondArray = [[3, 4]]
 
-    let result = strArr.map((current) => {
-        return current[0].toUpperCase() + current.slice(1)
+function tuckIn(arr1, arr2) {
+    return arr1.concat(arr2).sort((firstElem, secondElem) => {
+        return firstElem - secondElem
     })
-
-    return result.join(' ')
 }
 
-console.log(capitalize('my name is Cat'))
-
-// second
-
-function checkSubstring(string, substring) {
-    return string.toLowerCase().includes(substring.toLowerCase())
-}
-
-console.log(checkSubstring('Hello World', 'world'))
+console.log(tuckIn(firstArray, secondArray))
