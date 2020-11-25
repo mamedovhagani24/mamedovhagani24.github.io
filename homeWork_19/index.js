@@ -49,4 +49,4 @@ for (let key of li) {
 // Удалите div с классом “footer”.
 
 const footer1 = document.querySelector(".footer");
-footer.remove();
+footer1.remove();
