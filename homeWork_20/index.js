@@ -40,4 +40,5 @@ function sortTable(columnIndex) {
 
 
 sortTable(2)
+sortTable(2)
 
