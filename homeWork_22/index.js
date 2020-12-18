@@ -2,27 +2,29 @@
 
 // циклы (1)
 
-// function FicobacciNumber(number) {
-//   let result = 0;
-//   let prevResult = 1;
-//   let prePrevResult = 1;
+function FicobacciNumber(number) {
+    let result = 0;
+    let prevResult = 1;
+    let prePrevResult = 1;
 
-//   if (number > 2) {
-//     for (let i = 2; i < number; i++) {
-//       result = prevResult + prePrevResult;
+    if (number > 2) {
+        for (let i = 2; i < number; i++) {
+            result = prevResult + prePrevResult;
 
-//       prePrevResult = prevResult;
+            prePrevResult = prevResult;
 
-//       prevResult = result;
-//     }
-//   } else if (number === 0) {
-//     return 0;
-//   } else {
-//     return 1;
-//   }
+            prevResult = result;
+        }
+    } else if (number === 0) {
+        return 0;
+    } else {
+        return 1;
+    }
 
-//   return result;
-// }
+    return result;
+}
+
+console.log(FicobacciNumber(5));
 
 // console.log(FicobacciNumber(5));
 
