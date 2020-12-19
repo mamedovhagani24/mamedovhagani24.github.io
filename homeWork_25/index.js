@@ -12,7 +12,13 @@
 // console.log(newArr)
 // console.log(arr)
 
-let arr = [4, 1, 'Some element', 5, 2, 6]
+// let arr = [4, true, 1, 'Some element', 5, undefined, 2, null, 6, false]
 
-console.log(arr)
-console.log(arr.sort())
+// let arr = [-2, 4, -1, true, 0, 1, true]
+
+// let newArr = arr.sort((a, b) => {
+//     return a < b ? -1 : 1
+// })
+// // console.log(arr)
+// console.log(arr)
+// console.log(newArr)

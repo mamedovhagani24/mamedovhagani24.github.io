@@ -6,17 +6,11 @@ String.prototype.reverse = function () {
     return elemArr.join('')
 }
 
-Array.prototype.sort = function () {
+Array.prototype.sorted = Array.prototype.sort
+Array.prototype.sort = function (arguments) {
+    const arr = [...this];
+    return arr.sorted(arguments)
 
-    let arr = [...this]
-
-    let newArr = Object.keys(arr.reduce((arc, value) => {
-        arc[value] = value
-
-        return arc
-    }, {})).map(val => +val ? +val : val);
-
-    return newArr
 }
 
 NodeList.prototype.map = Array.prototype.map
