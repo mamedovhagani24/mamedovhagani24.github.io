@@ -1,17 +1,13 @@
-let animal = {
-    eats: true,
-}
-
-let rabbit = Object.create(animal)
-
-console.log(rabbit)
-console.log(Object.getPrototypeOf(rabbit))
-console.log(Object.getPrototypeOf(rabbit))
-
-Object.setPrototypeOf(rabbit, {
-    walk() {
-        return 'this rabbit is walk'
+class Animal {
+    constructor(name) {
+        this.speed = 0;
+        this.name = name
     }
-})
 
-console.log(rabbit.walk())
+    run(speed) {
+        this.speed = speed
+        return `${this.name} бежит со скоростью ${this.speed}`
+    }
+
+    
+}

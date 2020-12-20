@@ -1,24 +1,22 @@
-// const str = 'Hello World and Vasya';
-// console.log(str.reverse())
+const str = 'Hello World and Vasya';
+console.log(str.reverse())
 
-// let numArr = [1, 4, 2, 6, 2, 1]
+let arr1 = document.querySelectorAll('div')
 
-// let arr = document.querySelectorAll('div')
+let newArr1 = arr1.map((elem) => {
+    return elem
+})
 
-// let newArr = arr.map((elem) => {
-//     return elem
-// })
+console.log(newArr1)
+console.log(arr1)
 
-// console.log(newArr)
+
+
+let arr2 = [-2, 4, -1, 0, 1]
+
+let newArr2 = arr2.sort((a, b) => {
+    return a < b ? -1 : 1
+})
 // console.log(arr)
-
-// let arr = [4, true, 1, 'Some element', 5, undefined, 2, null, 6, false]
-
-// let arr = [-2, 4, -1, true, 0, 1, true]
-
-// let newArr = arr.sort((a, b) => {
-//     return a < b ? -1 : 1
-// })
-// // console.log(arr)
-// console.log(arr)
-// console.log(newArr)
+console.log(arr2)
+console.log(newArr2)
