@@ -1,9 +1,3 @@
-class Vegatable {
-    constructor(name) {
-        this.name = name
-    }
-}
-
 class Animal {
 
     stomach = []
@@ -11,25 +5,78 @@ class Animal {
         this.legs = legs
     }
 
-    set eat(foot) {
-        this.stomach.push(foot)
+    eat(food) {
+        this.stomach.push(food)
     }
+}
 
-    get eat() {
-        this.stomach
+class Vegatable {
+    constructor(name) {
+        this.name = name
     }
 }
 
 class Rabbit extends Animal {
-
-    constructor(breed) {
-
+    constructor(breed, legs) {
         super(legs)
         this.breed = breed
-
     }
 
+    jump() {
+        return `${this.breed} is jump`
+    }
+
+    eat(food) {
+        if (food instanceof Vegatable) {
+            this.stomach.push(food)
+        } else {
+            throw new Error('Это не еда')
+        }
+    }
+}
+
+class Snake extends Animal {
+    constructor(isPoisonous, legs) {
+        super(legs)
+        this.isPoisonous = isPoisonous
+    }
+
+    crawl() {
+        return `crawling now`
+    }
+
+    eat(food) {
+        if (food instanceof Rabbit) {
+            this.stomach.push(food)
+        } else {
+            throw new Error('Это не еда')
+        }
+    }
 
 }
 
-let rabbit1 = new Rabbit('Белый великан')
+class Human extends Animal {
+    constructor(firstName, lastName, legs) {
+        super(legs)
+        this.firstName = firstName
+        this.lastName = lastName
+    }
+
+    walk() {
+        return `${this.firstName} is walking`
+    }
+
+    greet() {
+        return `${this.firstName} is greeting`
+    }
+
+    eat(food) {
+        if (food instanceof Rabbit || food instanceof Snake || food instanceof Vegatable) {
+            throw new Error('Это не еда')
+        } else {
+            this.stomach.push(food)
+        }
+    }
+}
+
+
