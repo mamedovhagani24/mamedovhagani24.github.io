@@ -1,8 +1,16 @@
+class Vegatable {
+    constructor(name) {
+        this.name = name
+    }
+}
+
+
 class Animal {
 
-    stomach = []
+
     constructor(legs) {
         this.legs = legs
+        this.stomach = []
     }
 
     eat(food) {
@@ -10,15 +18,9 @@ class Animal {
     }
 }
 
-class Vegatable {
-    constructor(name) {
-        this.name = name
-    }
-}
-
 class Rabbit extends Animal {
-    constructor(breed, legs) {
-        super(legs)
+    constructor(breed) {
+        super(4)
         this.breed = breed
     }
 
@@ -36,8 +38,8 @@ class Rabbit extends Animal {
 }
 
 class Snake extends Animal {
-    constructor(isPoisonous, legs) {
-        super(legs)
+    constructor(isPoisonous) {
+        super(0)
         this.isPoisonous = isPoisonous
     }
 
@@ -46,18 +48,17 @@ class Snake extends Animal {
     }
 
     eat(food) {
-        if (food instanceof Rabbit) {
-            this.stomach.push(food)
-        } else {
+        if (!(food instanceof Rabbit)) {
             throw new Error('Это не еда')
         }
+        super.eat(food)
     }
 
 }
 
 class Human extends Animal {
-    constructor(firstName, lastName, legs) {
-        super(legs)
+    constructor(firstName, lastName) {
+        super(2)
         this.firstName = firstName
         this.lastName = lastName
     }
@@ -71,12 +72,14 @@ class Human extends Animal {
     }
 
     eat(food) {
-        if (food instanceof Rabbit || food instanceof Snake || food instanceof Vegatable) {
-            throw new Error('Это не еда')
-        } else {
+        if (!(food instanceof Human)) {
             this.stomach.push(food)
         }
+
+        super.eat(food)
     }
 }
 
 
+const human1 = new Human('Vasya', 'Ivanov')
+console.log(human1)
