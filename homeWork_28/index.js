@@ -1,5 +1,3 @@
-// ползователи
-
 const users = [
   {
     firstName: "Vasya",
@@ -14,8 +12,6 @@ const users = [
     lastName: "Maximov",
   },
 ];
-
-// главная функция
 
 function requestPromise(method, url, data) {
   return fetch(url, {
@@ -32,24 +28,18 @@ function requestPromise(method, url, data) {
     .catch(handleError);
 }
 
-function handleError(error) {
-  console.error(error);
-}
-
-// задача первая
-
 function getRandomNumberPromise() {
   requestRandomNumber(20, 50)
     .then((response) => {
-      if (!response) throw new Error("number don't generated");
+      if (!response) throw new Error("number wasn't generated");
 
       for (let i = 1; i <= +response; i++) console.count("Hello World");
     })
     .catch(handleError);
 }
 
-function requestRandomNumber(value, prob) {
-  return requestPromise("GET", `/stable?maxRandom=${value}&prob=${prob}`)
+function requestRandomNumber(value, percent) {
+  return requestPromise("GET", `/stable?maxRandom=${value}&prob=${percent}`)
     .then((response) => {
       if (!response) throw new Error("Error max number");
 
@@ -58,38 +48,36 @@ function requestRandomNumber(value, prob) {
     .catch(handleError);
 }
 
-// second task
-
 function createUser(data, percent) {
   return requestPromise("POST", "/objects?prob=" + percent, data).then(
-    (res) => {
-      if (!res) throw new Error("Error create user");
+    (response) => {
+      if (!response) throw new Error("Error create user");
 
       console.log("User created");
-      return res.json();
+      return response.json();
     }
   );
 }
 
 function secondTask() {
-  const errorProb = 0;
+  const percent = 20;
 
-  createUser(users[0], errorProb)
-    .then((createdUser) => {
-      if (!createdUser) throw new Error("user wasn't created");
-      return updateUserAge(createdUser.id, 33, errorProb);
+  createUser(users[0], percent)
+    .then((createUser) => {
+      if (!createUser) throw new Error("user wasn't created");
+      return updateUserAge(createUser.id, 33, percent);
     })
-    .then((updatedUser) => {
-      if (!updatedUser) throw new Error("user's age wasn't updated");
-      return removeUser(updatedUser.id, errorProb);
+    .then((updateUser) => {
+      if (!updateUser) throw new Error("user's age wasn't updated");
+      return removeUser(updateUser.id, percent);
     })
     .catch(handleError);
 }
 
 function removeUser(userId, percent) {
   return requestPromise("DELETE", `/objects/${userId}?prob=${percent}`).then(
-    (res) => {
-      if (!res) throw new Error("Error remove user");
+    (response) => {
+      if (!response) throw new Error("Error remove user");
 
       console.log("User removed");
     }
@@ -99,60 +87,62 @@ function removeUser(userId, percent) {
 function updateUserAge(userId, age, percent) {
   return requestPromise("PATCH", `/objects/${userId}/?prob=${percent}`, {
     age,
-  }).then((res) => {
-    if (!res) throw new Error("Error update age");
+  }).then((response) => {
+    if (!response) throw new Error("Error update age");
 
     console.log("User age updated");
-    return res.json();
+    return response.json();
   });
 }
 
-// thirt task
-
 function thirdTask() {
-  const errorProb = 5;
+  const percent = 5;
   let usersId = [];
 
   Promise.all(
     users.map((userData) => {
-      return createUser(userData, errorProb);
+      return createUser(userData, percent);
     })
   )
-    .then((res) => {
-      if (!res) throw new Error("Create User Error");
+    .then((response) => {
+      if (!response) throw new Error("Create User Error");
 
-      usersId = res.map((el) => el.id);
+      usersId = response.map((el) => el.id);
 
-      return getRandomAges(errorProb);
+      return getRandomAges(percent);
     })
     .then((ages) => {
-      if (!ages) throw new Error("Create Random Ages");
+      if (!ages) throw new Error("Create Random Ages Error");
 
       return usersId.map((id, i) => {
-        return updateUserAge(id, ages[i], errorProb);
+        return updateUserAge(id, ages[i], percent);
       });
     })
     .then((res) => {
-      if (!res) throw new Error("Update User's Age");
+      if (!res) throw new Error("Update User's Age Error");
 
-      return requestRandomNumber(3, errorProb);
+      return requestRandomNumber(3, percent);
     })
     .then((randId) => {
-      if (!randId) throw new Error("Random Number ID");
+      if (!randId) throw new Error("Random Number ID Error");
 
       for (let i = 0; i < 3; i++) {
         if (randId === i) continue;
 
-        removeUser(usersId[i], errorProb);
+        removeUser(usersId[i], percent);
       }
     })
     .catch(handleError);
 }
 
-function getRandomAges(prob) {
+function getRandomAges(percent) {
   return Promise.all(
     users.map((el) => {
-      return requestRandomNumber(100, prob);
+      return requestRandomNumber(100, percent);
     })
   );
+}
+
+function handleError(err) {
+  console.error(err);
 }

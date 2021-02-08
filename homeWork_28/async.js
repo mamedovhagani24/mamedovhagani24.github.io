@@ -1,6 +1,6 @@
-// пользователи
+"use strict";
 
-const USERS_EXAMPLE = [
+const users = [
   {
     firstName: "Vasya",
     lastName: "Ivanov",
@@ -15,32 +15,68 @@ const USERS_EXAMPLE = [
   },
 ];
 
-//
+async function getRandomNumberAsync() {
+  const requestNumber = await requestRandomNumber(20, 50);
+  if (!requestNumber) return;
 
-async function taskSecond() {
-  const errorPercent = 20;
+  for (let i = 1; i <= +requestNumber; i++) console.count("Hello World");
+}
 
-  const objCreate = await createUser(users[0], errorPercent);
-  if (!objCreate) return;
+async function requestRandomNumber(value, percent) {
+  const result = await requestAsync(
+    "GET",
+    `/unstable?maxRandom=${value}&prob=${percent}`
+  );
+  return result?.text();
+}
 
-  console.log("user created", objCreate);
+async function secondTask() {
+  const percent = 0;
 
-  const objPutch = await updateUserAge(objCreate.id, 33, errorPercent);
-  if (!objPutch) return;
+  const createObj = await createUser(users[0], percent);
+  if (!createObj) return;
 
-  console.log("user updated", objPutch);
+  console.log("user created", createObj);
 
-  const objDelete = await removeUser(objPutch.id, errorPercent);
-  if (!objDelete) return;
+  const putchObj = await updateUserAge(createObj.id, 33, percent);
+  if (!putchObj) return;
+
+  console.log("user updated", putchObj);
+
+  const DeleteObj = await removeUser(putchObj.id, percent);
+  if (!DeleteObj) return;
 
   console.log("user removed");
 }
 
-// главная функция
+async function createUser(data, percent) {
+  const reqCreate = await requestAsync(
+    "POST",
+    "/objects?prob=" + percent,
+    data
+  );
+  return reqCreate?.json();
+}
+
+async function updateUserAge(Id, age, prob) {
+  const reqPatch = await requestAsync("PATCH", `/objects/${Id}?prob=${prob}`, {
+    age,
+  });
+
+  return reqPatch?.json();
+}
+
+async function removeUser(userId, prob) {
+  const reqDelete = await requestAsync(
+    "DELETE",
+    `/objects/${userId}?prob=${prob}`
+  );
+  return reqDelete?.statusText;
+}
 
 async function requestAsync(method, url, data) {
   try {
-    const requeset = await fetch(url, {
+    const response = await fetch(url, {
       method: method,
       headers: {
         "Content-type": "application/json;charset=utf-8",
@@ -48,98 +84,10 @@ async function requestAsync(method, url, data) {
       body: JSON.stringify(data),
     });
 
-    if (!requeset.ok) throw new Error(req.statusText);
+    if (!response.ok) throw new Error(response.statusText);
 
     return response;
   } catch (err) {
     console.error(method + " Request " + err);
-  }
-}
-
-// first task
-
-async function getRandomNumberAsync() {
-  const result = await requestRandomNumber(20, 50);
-  if (!result) return;
-
-  for (let i = 1; i <= +result; i++) console.count("Hello World");
-}
-
-async function requestRandomNumber(value, percent) {
-  const result = await requestDemoAsync(
-    "GET",
-    `/unstable?maxRandom=${value}&prob=${percent}`
-  );
-  return result?.text();
-}
-
-// second task
-async function createUser(data, percent) {
-  const createUser = await requestPromise(
-    "POST",
-    "/objects?prob=" + percent,
-    data
-  );
-  return createUser?.json();
-}
-
-async function updateUserAge(userId, age, percent) {
-  const PutchUser = await requestPromise(
-    "PATCH",
-    `/objects/${userId}?prob=${percent}`,
-    { age }
-  );
-
-  return PutchUser?.json();
-}
-
-async function removeUser(userId, percent) {
-  const deleteUser = await requestPromise(
-    "DELETE",
-    `/objects/${userId}?prob=${percent}`
-  );
-  return deleteUser?.statusText;
-}
-
-// third task
-
-async function thirdTask() {
-  const percent = 5;
-
-  const createdUsersId = users.map(async (user) => {
-    const resCreate = await createUser(user, percent);
-    if (!resCreate) return;
-
-    return resCreate.id;
-  });
-
-  const randomAges = createdUsersId.map(async (id) => {
-    const randomAge = await requestRandomNumber(100, percent);
-    if (!randomAge) return;
-
-    return await +randomAge;
-  });
-
-  const updatedUsers = createdUsersId.map(async (userId, i) => {
-    const id = await userId;
-    const age = await randomAges[i];
-    if (!age) return;
-
-    const resUpdate = await updateUserAge(id, age, errorProb);
-    if (!resUpdate) return;
-
-    return resUpdate;
-  });
-
-  const userNotDelete = await requestRandomNumber(3, percent);
-  if (!userNotDelete) return;
-
-  for (let i = 0; i < 3; i++) {
-    if (i === +userNotDelete) continue;
-
-    const resRemoved = await removeUser(i, errorProb);
-    if (!resRemoved) return;
-
-    console.log(`User width id - ${i} removed`);
   }
 }
